@@ -1,10 +1,8 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
-  if (date == null) return 'Unable to determine the time of year!'
-  // if (typeof date != object) return 'THROWN'
-  let arrDate = date.toString().split(' ')
-  if (arrDate.length != 7) throw "THROWN"
+  if (!date) return 'Unable to determine the time of year!'
+  if (Object.prototype.toString.call(date) !== '[object Date]') throw 'Error';
 
   let month = date.getMonth();
   switch (month) { 
